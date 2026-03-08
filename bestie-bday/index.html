@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <title>Happy Birthday Ushi! 🎀</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="audio/happy-birthday.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- FLOATING HEARTS -->
+  <div class="floatHearts" id="floatHearts"></div>
+
+  <!-- DOOR TRANSITION -->
+  <div class="doorTransition hidden" id="doorTransition" aria-hidden="true">
+    <div class="door leftDoor"></div>
+    <div class="door rightDoor"></div>
+    <div class="doorCenterGlow"></div>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <section id="intro-section" class="hero">
+    <div class="hero-bg">
+      <img
+        src="images/mainPage.jpeg"
+        alt="Birthday background"
+        onerror="this.src='https://via.placeholder.com/1200x800/ff7eb3/ffffff?text=Ushi+Birthday'"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-overlay-soft"></div>
+    </div>
+
+    <div class="hero-content revealUp">
+      <h1 class="heroTitle">
+        Happy Birthday,<br />
+        <span class="friendName">Ushi</span>!
+      </h1>
+      <p class="heroSub">Celebrating the Beautiful Ushi’s Birthday ✨</p>
+
+      <div class="miniHearts">
+        <span>💗</span><span>💖</span><span>✨</span><span>🌸</span>
+      </div>
+
+      <button class="ctaBtn" id="startBtn">Start Celebration ➜</button>
+    </div>
+  </section>
+
+  <!-- CARD PAGE 1 -->
+  <section id="card1-section" class="cardPage hidden">
+    <div class="cardWrap">
+      <div class="specialCard glassCard revealScale">
+        <div class="sparkle">✨</div>
+        <h2>It’s Your Special Day <span class="friendName">Ushi!</span></h2>
+        <p class="cardSub">I made something special just for you 💖</p>
+
+        <button class="mainPinkBtn" id="nextCardBtn">Next</button>
+
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <button class="backBtnCard" id="backFromCard1">Back ⬅️</button>
+    </div>
+  </section>
+
+  <!-- CARD PAGE 2 -->
+  <section id="card2-section" class="cardPage hidden">
+    <div class="cardWrap">
+      <div class="specialCard secondCard glassCard revealScale">
+        <div class="sparkle">✨</div>
+        <p class="questionText">Do you wanna see what I made??</p>
+
+        <div class="choiceBtns">
+          <button class="yesBtn" id="yesBtn">Yes 💖</button>
+          <button class="noBtn" id="noBtn">No 💜</button>
+        </div>
+
+        <div class="dots">
+          <span class="dot"></span>
+          <span class="dot active"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMORIES PAGE -->
+  <section id="memories-section" class="memories hidden">
+    <div class="memWrap">
+      <div class="memHeader revealUp">
+        <p class="memOverline">SPECIAL MOMENTS</p>
+        <h2 class="memTitle">Our Memories <span>📸</span></h2>
+        <p class="memSub">Click the arrows to slide through our memories 💗</p>
+      </div>
+
+      <div class="memoryShowcase revealUp">
+        <button class="memoryArrow" id="memoryPrev" aria-label="Previous memory">‹</button>
+
+        <div class="memoryStage" id="memoryStage">
+          <div class="memoryCard memoryCard--left glassCardLite" id="leftCard">
+            <img
+              id="leftImg"
+              src="images/memory1.jpeg"
+              alt="Left memory"
+              onerror="this.src='https://via.placeholder.com/500x700/fbc2eb/ffffff?text=Memory+1'"
+            />
+          </div>
+
+          <div class="memoryCard memoryCard--center glassCardLite" id="centerCard">
+            <img
+              id="centerImg"
+              src="images/memory2.jpeg"
+              alt="Center memory"
+              onerror="this.src='https://via.placeholder.com/500x700/fbc2eb/ffffff?text=Memory+2'"
+            />
+          </div>
+
+          <div class="memoryCard memoryCard--right glassCardLite" id="rightCard">
+            <img
+              id="rightImg"
+              src="images/memory3.jpeg"
+              alt="Right memory"
+              onerror="this.src='https://via.placeholder.com/500x700/fbc2eb/ffffff?text=Memory+3'"
+            />
+          </div>
+        </div>
+
+        <button class="memoryArrow" id="memoryNext" aria-label="Next memory">›</button>
+      </div>
+
+      <div class="memoryCaption" id="memoryCaption">Memory 1</div>
+      <div class="miniIndicators" id="miniIndicators"></div>
+
+      <div class="btnRow revealUp">
+        <button class="btnPrimary" id="messageBtn">Read Message 💌</button>
+        <button class="btnPrimary altBtn" id="sorryBtn">I'm Sorry Ushi 💔</button>
+        <button class="btnPrimary altBtn" id="mostLikedVideoBtn">Most liked Video ▶</button>
+        <button class="btnGhost" id="backToMainBtn">Back to Main ⬅️</button>
+      </div>
+
+      <div class="finalLoveNote revealUp">
+        <p>You make every memory more beautiful 💞</p>
+      </div>
+
+      <footer class="footer">Made by Ramosh • <span id="year"></span></footer>
+    </div>
+  </section>
+
+  <!-- MESSAGE MODAL -->
+  <div class="modal" id="messageModal">
+    <div class="modalInner glassWhite">
+      <button class="xBtn" id="closeModal">✕</button>
+      <h3 class="modalTitle">Happy Birthday! 🎉</h3>
+      <div class="letter" id="typedLetter"></div>
+    </div>
+  </div>
+
+  <!-- CENTER IMAGE PREVIEW MODAL -->
+  <div class="imageModal" id="imageModal">
+    <button class="imageClose" id="imageClose">✕</button>
+    <img id="modalMemoryImg" src="" alt="Full memory preview" />
+  </div>
+
+  <!-- SORRY GALLERY MODAL -->
+  <div class="sorryModal" id="sorryModal">
+    <button class="sorryClose" id="sorryClose">✕</button>
+    <button class="sorryArrow sorryArrowLeft" id="sorryPrev" aria-label="Previous photo">‹</button>
+
+    <div class="sorryModalInner glassDark">
+      <div class="sorryTopText">For You, Ushi 💔</div>
+      <img id="sorryModalImg" src="" alt="Sorry gallery image" />
+      <div class="sorryCaption" id="sorryCaption">Photo 1</div>
+      <div class="sorryDots" id="sorryDots"></div>
+    </div>
+
+    <button class="sorryArrow sorryArrowRight" id="sorryNext" aria-label="Next photo">›</button>
+  </div>
+
+  <!-- MOST LIKED VIDEO MODAL -->
+  <div class="videoModal" id="videoModal">
+    <button class="videoClose" id="videoClose">✕</button>
+
+    <div class="videoModalInner glassDark">
+      <div class="videoTopText">Most Liked Video For Ushi 🎬</div>
+
+      <!-- Preview State -->
+      <div class="videoPreviewWrap" id="videoPreviewWrap">
+        <img
+          id="videoPreviewImg"
+          src="images/videoPreview.jpeg"
+          alt="Video preview"
+          onerror="this.src='https://via.placeholder.com/900x600/f7cce3/5a2244?text=Most+Liked+Video+Preview'"
+        />
+        <button class="videoPlayBtn" id="videoPlayBtn" aria-label="Play video">▶</button>
+        <p class="videoHint">Click preview to play the video 💖</p>
+      </div>
+
+      <!-- Video State -->
+      <div class="videoPlayerWrap hidden" id="videoPlayerWrap">
+        <video id="mostLikedVideo" controls playsinline webkit-playsinline preload="metadata">
+          <source src="videos/mostLikedVideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
